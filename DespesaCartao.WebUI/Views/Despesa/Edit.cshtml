@@ -1,0 +1,85 @@
+﻿@model DespesaCartao.Domain.Entities.Despesa
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Despesa"))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Despesa</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.DespesaID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataCompra, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataCompra)
+                @Html.ValidationMessageFor(model => model.DataCompra)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DescricaoProduto, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DescricaoProduto)
+                @Html.ValidationMessageFor(model => model.DescricaoProduto)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ValorTotal, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ValorTotal)
+                @Html.ValidationMessageFor(model => model.ValorTotal)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QtdParcelas, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QtdParcelas)
+                @Html.ValidationMessageFor(model => model.QtdParcelas)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comprador, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{ Html.RenderAction("MontarClientes", "Cliente", new { idClienteSelecionado = Model.ClienteID }); }
+                @Html.ValidationMessageFor(model => model.ClienteID, "O campo Comprador é obrigatório")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Loja, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{ Html.RenderAction("MontarLojas", "Loja", new { idLojaSelecionado = Model.LojaID }); }
+                @Html.ValidationMessageFor(model => model.LojaID, "O campo Loja é obrigatório")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cartao, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{ Html.RenderAction("MontarCartoes", "Cartao", new { idCartaoSelecionado = Model.CartaoID }); }
+                @Html.ValidationMessageFor(model => model.CartaoID, "O campo Cartão é obrigatório")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

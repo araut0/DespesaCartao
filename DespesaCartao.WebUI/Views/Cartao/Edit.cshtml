@@ -1,0 +1,63 @@
+﻿@model DespesaCartao.Domain.Entities.Cartao
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Cartao"))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Cartao</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.CartaoID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fornecedor, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Fornecedor)
+                @Html.ValidationMessageFor(model => model.Fornecedor)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Bandeira, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Bandeira)
+                @Html.ValidationMessageFor(model => model.Bandeira)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiaVencimento, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DiaVencimento)
+                @Html.ValidationMessageFor(model => model.DiaVencimento)
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Proprietario, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    Html.RenderAction("MontarClientes", "Cliente", new { idClienteSelecionado = Model.ClienteID });
+                }
+                @Html.ValidationMessageFor(model => model.ClienteID, "O campo Proprietário é obrigatório.")
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar para listagem", "Index")
+</div>

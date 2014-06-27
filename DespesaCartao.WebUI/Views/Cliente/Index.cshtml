@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DespesaCartao.Domain.Entities.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Novo Cliente", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.Nome, "Edit", new { item.ClienteID })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @using (Html.BeginForm("Delete", "Cliente"))
+            {
+                @Html.Hidden("clienteId", item.ClienteID)
+                <input type="submit" value="Delete" />
+            }
+        </td>
+    </tr>
+}
+
+</table>

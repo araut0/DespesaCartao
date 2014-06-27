@@ -1,0 +1,50 @@
+﻿@model DespesaCartao.Domain.Entities.Loja
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("Edit", "Loja"))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Loja</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.LojaID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nome)
+                @Html.ValidationMessageFor(model => model.Nome)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Segmento, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{ Html.RenderAction("MontarSegmentos", "Segmento", new { idSegmentoSelecionado = Model.SegmentoID }); }
+                @Html.ValidationMessageFor(model => model.SegmentoID, "O campo Segmento é obrigatório")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar para listagem", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

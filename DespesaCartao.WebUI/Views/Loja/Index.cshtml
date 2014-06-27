@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DespesaCartao.Domain.Entities.Loja>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Nova Loja", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Segmento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.Nome, "Edit", new { item.LojaID })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Segmento.Nome, "Segmento")
+        </td>
+        <td>
+            @using (Html.BeginForm("Delete", "Loja"))
+            {
+                @Html.Hidden("lojaId", item.LojaID);
+                <input type="submit" value="Excluir"/>
+            }
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,3 @@
+﻿@model IEnumerable<DespesaCartao.Domain.Entities.Loja>
+
+@Html.DropDownList("LojaID", new SelectList(Model, "LojaID", "Nome", @ViewBag.IDLojaSelecionado), "Selecione")

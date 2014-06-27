@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DespesaCartao.Domain.Entities.Cartao>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Novo Cartão", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fornecedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bandeira)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaVencimento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.Fornecedor, "Edit", new { item.CartaoID })
+        </td>
+        <td>
+            @Html.ActionLink(item.Bandeira, "Edit", new { item.CartaoID })
+        </td>
+        <td>
+            @Html.ActionLink(item.DiaVencimento.ToString(), "Edit", new { item.CartaoID })
+        </td>
+        <td>
+            @using (Html.BeginForm("Delete", "Cartao"))
+            {
+                Html.Hidden("CartaoID", item.CartaoID);
+                <input type="submit" value="Excluir"/>
+            }
+        </td>
+    </tr>
+}
+
+</table>

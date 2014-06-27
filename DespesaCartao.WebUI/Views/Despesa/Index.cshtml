@@ -1,0 +1,74 @@
+﻿@model IEnumerable<DespesaCartao.Domain.Entities.Despesa>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCompra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCriacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescricaoProduto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QtdParcelas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comprador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Loja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cartao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataCompra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataCriacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescricaoProduto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QtdParcelas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comprador.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Loja.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cartao.Bandeira) -  @Html.DisplayFor(modelItem => item.Cartao.Fornecedor)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DespesaID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DespesaID })
+        </td>
+    </tr>
+}
+
+</table>
