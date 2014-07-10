@@ -4,6 +4,13 @@
     ViewBag.Title = "Editar";
 }
 
+<script>
+    $(document).ready(function () {
+        $("#ValorTotal").maskMoney({ prefix: 'R$ ', allowNegative: false, thousands: '.', decimal: ',', affixesStay: false });
+    });
+</script>
+
+
 <h2>Editar</h2>
 
 @using (Html.BeginForm("Edit", "Despesa"))
