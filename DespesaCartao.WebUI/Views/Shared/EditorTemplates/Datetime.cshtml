@@ -1,0 +1,13 @@
+﻿@model System.DateTime
+
+@Html.TextBox("", string.Empty, new { @class = "pickDate" })
+
+<script type="text/javascript">
+     $(document).ready(function () {
+         $('.pickDate').datepicker({
+             changeMonth: true,
+             changeYear: true,
+             dateFormat: 'dd/mm/yy'
+         });
+     });
+</script>

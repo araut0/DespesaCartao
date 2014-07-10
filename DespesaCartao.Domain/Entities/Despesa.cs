@@ -9,7 +9,6 @@ namespace DespesaCartao.Domain.Entities
         [HiddenInput(DisplayValue=false)]
         public int DespesaID { get; set; }
         [Required(ErrorMessage="O campo data de compra é obrigatório.")]
-        [DataType(DataType.Date)]
         public DateTime DataCompra { get; set; }
         public DateTime DataCriacao { get; set; }
         [Required(ErrorMessage="O campo descrição do produto é obrigatório.")]
