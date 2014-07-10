@@ -6,5 +6,4 @@
 /// <reference path="jquery.validate.unobtrusive.js" />
 /// <reference path="respond.js" />
 /// <reference path="respond.matchmedia.addlistener.js" />
-/// <reference path="jquery-ui-1.11.0.js" />
 /// <reference path="jquery.maskmoney.min.js" />

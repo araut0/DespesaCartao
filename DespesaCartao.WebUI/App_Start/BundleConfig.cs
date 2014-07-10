@@ -10,7 +10,6 @@ namespace DespesaCartao
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js", 
-                        "~/Scripts/jquery-ui-{version}.js",
                         "~/Scripts/jquery.maskMoney.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -27,8 +26,7 @@ namespace DespesaCartao
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/jquery-ui.css"));
+                      "~/Content/site.css"));
         }
     }
 }

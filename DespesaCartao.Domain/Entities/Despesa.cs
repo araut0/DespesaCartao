@@ -18,6 +18,7 @@ namespace DespesaCartao.Domain.Entities
         [DataType(DataType.Currency)]
         public decimal ValorTotal { get; set; }
         [Required(ErrorMessage="O campo quantidade de parcelas é obrigatório")]
+        [Range(1, 15, ErrorMessage="Quantidade de parcelas deve ser entre 1 e 15")]
         public int QtdParcelas { get; set; }
         [Required]
         [HiddenInput(DisplayValue = false)]
